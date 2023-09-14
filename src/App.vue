@@ -1,15 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <LoginForm title="LOGIN" />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import LoginForm from "./components/LoginForm.vue";
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    LoginForm,
+  },
+  data() {
+    return {
+      tasks: [],
+    };
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: "Doctors Appointment",
+        reminder: false,
+      },
+      {
+        id: 2,
+        text: "Meeting at School",
+        reminder: true,
+      },
+      {
+        id: 3,
+        text: "Food Shopping",
+        reminder: true,
+      },
+      {
+        id: 4,
+        text: "Clean Yard",
+        reminder: true,
+      },
+    ];
   },
 };
 </script>
