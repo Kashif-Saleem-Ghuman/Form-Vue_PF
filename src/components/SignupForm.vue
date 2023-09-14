@@ -41,7 +41,12 @@
             id="signupPassword"
             v-model="password"
           />
-          <i class="bx bxs-hide eye-icon"></i>
+          <box-icon
+            class="eye-icon bxs-hide"
+            type="solid"
+            name="hide"
+            @click="togglePassword"
+          ></box-icon>
         </div>
 
         <div class="field input-field" id="address">
@@ -74,6 +79,7 @@
             id="image"
             placeholder="Address"
             class="image"
+            @change="previewFiles"
           />
         </div>
 
@@ -102,7 +108,21 @@
   </section>
 </template>
 
+<script>
+export default {
+  methods: {
+    previewFiles(event) {
+      console.log(event.target.value);
+      localStorage.setItem("image", event.target.value);
+    },
+    setup() {},
+  },
+};
+</script>
+
 <script setup>
+import "boxicons";
+
 import { ref } from "vue";
 
 //state
@@ -132,5 +152,12 @@ const addSignUpData = () => {
 
   // add to local storage
   localStorage.setItem("signUpData", JSON.stringify(signUpData));
+};
+
+const togglePassword = () => {
+  // console.log(password.value);
+  const passw = document.getElementById("signupPassword");
+
+  console.log(passw.type);
 };
 </script>
