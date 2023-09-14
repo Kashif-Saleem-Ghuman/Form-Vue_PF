@@ -9,6 +9,7 @@
             placeholder="First Name"
             class="input"
             id="firstName"
+            v-model="firstName"
           />
         </div>
 
@@ -18,6 +19,7 @@
             placeholder="Last Name"
             class="input"
             id="lastName"
+            v-model="lastName"
           />
         </div>
 
@@ -27,6 +29,7 @@
             placeholder="Email"
             class="input"
             id="signupEmail"
+            v-model="email"
           />
         </div>
 
@@ -36,6 +39,7 @@
             placeholder="Password"
             class="password"
             id="signupPassword"
+            v-model="password"
           />
           <i class="bx bxs-hide eye-icon"></i>
         </div>
@@ -46,11 +50,17 @@
             id="phoneNumber"
             placeholder="Address"
             class="password"
+            v-model="address"
           />
         </div>
 
         <div class="field input-field">
-          <input type="text" placeholder="Phone Number" class="password" />
+          <input
+            type="text"
+            placeholder="Phone Number"
+            class="password"
+            v-model="phoneNumber"
+          />
         </div>
 
         <div
@@ -77,7 +87,7 @@
 
         <div class="btn-wrapper">
           <div>
-            <button onclick="addSignUpData()" class="field button-field">
+            <button @click="addSignUpData" class="field button-field">
               Sign Up
             </button>
           </div>
@@ -92,4 +102,35 @@
   </section>
 </template>
 
-<style></style>
+<script setup>
+import { ref } from "vue";
+
+//state
+const firstName = ref("");
+const lastName = ref("");
+const email = ref("");
+const password = ref("");
+const address = ref("");
+const phoneNumber = ref("");
+
+// const image = ref("");
+// const camera = ref("");
+// const results = ref("");
+
+const addSignUpData = () => {
+  const signUpData = {
+    firstName: firstName.value,
+    lastName: lastName.value,
+    email: email.value,
+    password: password.value,
+    address: address.value,
+    phoneNumber: phoneNumber.value,
+    // image: image.value,
+    // camera: camera.value,
+    // results: results.value,
+  };
+
+  // add to local storage
+  localStorage.setItem("signUpData", JSON.stringify(signUpData));
+};
+</script>
